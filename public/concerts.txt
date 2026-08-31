@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────────────────────
+# CONCERT DATES
+# ─────────────────────────────────────────────────────────────
+# This is the ONLY file you need to edit to add, remove, or
+# change a concert date on the website. No code, no syntax to
+# worry about — just plain text.
+#
+# One concert per line, with 5 parts separated by a pipe " | ":
+#
+#   DATE | ANNÉE | HEURE | VILLE | LIEU
+#
+# Example:
+#   12 JUIN | 2026 | 20:00 | Lausanne | Lavaux Classic
+#
+#   - DATE  -> short date shown in big text, e.g. "12 JUIN"
+#   - ANNÉE -> the year, e.g. "2026"
+#   - HEURE -> the start time, e.g. "20:00"
+#   - VILLE -> the city name, shown as the title
+#   - LIEU  -> the venue or event name
+#
+# To add a concert: copy a line below, paste it, edit the info.
+# To remove a concert: delete its whole line.
+# The website updates automatically — no other file to touch.
+#
+# Lines starting with # (like this one) are just notes and are
+# ignored — they won't show up as concerts. Concerts are shown
+# on the site in the same order as the lines below.
+# ─────────────────────────────────────────────────────────────
+
+12 JUIN | 2026 | 20:00 | Lausanne | Lavaux Classic
+20 JUIN | 2026 | 18:30 | Lausanne | Fête de la musique - EJMA
+04 JUIL | 2026 | 21:00 | Montreux | Scène ouverte
+18 JUIL | 2026 | 19:00 | Genève | Festival d'été

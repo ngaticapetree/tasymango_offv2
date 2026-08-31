@@ -1,0 +1,15 @@
+# ─────────────────────────────────────────────────────────────
+# LIEN YOUTUBE
+# ─────────────────────────────────────────────────────────────
+# Une seule ligne : l'URL de la chaîne YouTube de Tasty Mango.
+# Tous les boutons "YouTube" et "Vidéos" du site (menu Média,
+# page Média, Contact, pied de page) utilisent ce lien.
+#
+# Pour la mettre à jour : remplacez la ligne ci-dessous par
+# l'adresse de la chaîne, par exemple :
+#   https://www.youtube.com/@TastyMango
+#
+# Lignes commençant par # (comme celle-ci) sont ignorées.
+# ─────────────────────────────────────────────────────────────
+
+https://www.youtube.com/@TastyMango

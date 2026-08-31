@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────────
+# GALLERY PHOTOS
+# ─────────────────────────────────────────────────────────────
+# One photo link per line. That's it — no commas, no quotes,
+# no captions.
+#
+# How to add a photo:
+#   1. Upload it at imgbb.com
+#   2. Copy the "Direct link" (looks like https://i.ibb.co/xxx/photo.jpg)
+#   3. Paste it on its own new line below
+#
+# How to remove a photo: delete its line.
+#
+# Lines starting with # (like this one) are just notes and are
+# ignored — they won't show up as photos.
+# ─────────────────────────────────────────────────────────────
+
+https://i.ibb.co/zWB87RvC/PHOTO-2026-08-22-18-03-13.jpg
