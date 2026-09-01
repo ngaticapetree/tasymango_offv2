@@ -11,6 +11,8 @@ import { useYoutubeUrl } from "@/hooks/use-youtube-url"
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const youtubeUrl = useYoutubeUrl()
 
   const socials = [
@@ -36,9 +38,37 @@ export function ContactSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      subject: String(formData.get("subject") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    }
+
+    setLoading(true)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null)
+        throw new Error(data?.error || "Une erreur est survenue.")
+      }
+
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Une erreur est survenue.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -147,12 +177,14 @@ export function ContactSection() {
                     className="rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   />
                 </div>
+                {error && <p className="text-sm text-destructive">{error}</p>}
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full group"
+                  disabled={loading}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full group disabled:opacity-70"
                 >
-                  Envoyer le message
+                  {loading ? "Envoi…" : "Envoyer le message"}
                   <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
