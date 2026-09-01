@@ -2,7 +2,12 @@ import { NextResponse } from "next/server"
 
 // Who gets emailed when someone submits the Contact form.
 // Add more addresses to this array if needed — e.g. a bandmate's email.
-const NOTIFICATION_RECIPIENTS = ["ngaticapetree@gmail.com"]
+const NOTIFICATION_RECIPIENTS = [
+  "ngaticapetree@gmail.com",
+  "castioniaurele@gmail.com",
+  "el.deandres@ikmail.com",
+  "raphael.bollengier@icloud.com",
+]
 
 // The address the notification email is sent FROM. Must eventually match
 // a domain authenticated in Brevo (Settings → Senders, Domains) for best
