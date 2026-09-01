@@ -27,7 +27,6 @@
 # on the site in the same order as the lines below.
 # ─────────────────────────────────────────────────────────────
 
-12 JUIN | 2026 | 20:00 | Lausanne | Lavaux Classic
-20 JUIN | 2026 | 18:30 | Lausanne | Fête de la musique - EJMA
-04 JUIL | 2026 | 21:00 | Montreux | Scène ouverte
-18 JUIL | 2026 | 19:00 | Genève | Festival d'été
+03 MAI | 2026 | 12:30 | Pully | WEMP  Scène extérieure de l'Esplanade
+27 JUIN | 2026 | --:-- | Cully | Finale Lavaux Classique
+22 AOÛT | 2026 | 16:30 | Cugy |
