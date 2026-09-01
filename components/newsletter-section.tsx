@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 export function NewsletterSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [subscribed, setSubscribed] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,9 +29,32 @@ export function NewsletterSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubscribed(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+    const email = String(formData.get("email") || "").trim()
+
+    setLoading(true)
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null)
+        throw new Error(data?.error || "Une erreur est survenue.")
+      }
+
+      setSubscribed(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Une erreur est survenue.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -71,12 +96,17 @@ export function NewsletterSection() {
             <Button
               type="submit"
               size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-6 group shrink-0"
+              disabled={loading}
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-6 group shrink-0 disabled:opacity-70"
             >
-              S&apos;inscrire
+              {loading ? "Envoi…" : "S'inscrire"}
               <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>
+        )}
+
+        {error && (
+          <p className="reveal opacity-0 animation-delay-600 mt-4 text-sm text-primary-foreground/80">{error}</p>
         )}
       </div>
     </section>
